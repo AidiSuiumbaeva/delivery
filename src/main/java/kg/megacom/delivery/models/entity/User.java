@@ -7,6 +7,7 @@ import javax.persistence.*;
 
 @Data
 @Entity
+@Table(name = "users")
 public class User {
     @Id
     @GeneratedValue
@@ -17,5 +18,7 @@ public class User {
     @ManyToOne
     @JoinColumn(name = "position_id")
     private Positions positions;
+
+
 
 }

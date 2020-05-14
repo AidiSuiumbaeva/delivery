@@ -6,6 +6,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.List;
 
 @Data
 @Entity
@@ -15,16 +16,15 @@ public class Order {
     @GeneratedValue
     private Long id;
     private double sum;
-    @JsonFormat(pattern = "HH.mm")
-    private Date start;
-    @JsonFormat(pattern = "HH.mm")
-    private Date end;
+    @JsonFormat(pattern = "dd.MM.yyyy")
+    private Date date;
 
-    @OneToMany
-    @JoinColumn(name = "status_id")
-    private OrderStatus statusId;
 
     @OneToOne
+    @JoinColumn(name = "status_id")
+    private OrderDetails OrderDetailsId;
+
+    @ManyToOne
     @JoinColumn(name="client_id")
     private Client clientId;
 

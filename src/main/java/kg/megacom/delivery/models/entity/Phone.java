@@ -6,6 +6,7 @@ import javax.persistence.*;
 
 @Data
 @Entity
+@Table(name = "phones")
 public class Phone {
     @Id
     @GeneratedValue
@@ -13,6 +14,7 @@ public class Phone {
 
     private String phone;
     private boolean isActive;
+    private boolean isMain;
 
     @ManyToOne
     @JoinColumn

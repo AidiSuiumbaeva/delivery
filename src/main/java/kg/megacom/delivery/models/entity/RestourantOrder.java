@@ -1,26 +1,37 @@
 package kg.megacom.delivery.models.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import kg.megacom.delivery.models.entity.Dish;
+import com.sun.javafx.beans.IDProperty;
 import lombok.Data;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @Entity
-@Table(name = "prices")
-public class Price {
+@Table(name = "restourantOrders")
+public class RestourantOrder {
     @Id
     @GeneratedValue
     private Long id;
-    private double price;
+    private boolean isReady;
+
     @JsonFormat(pattern = "dd.MM.yyyy")
     private Date startDate;
     @JsonFormat(pattern = "dd.MM.yyyy")
     private Date endDate;
-    @ManyToOne
-    @JoinColumn(name = "dish_id")
-    private Dish dish;
+
+    @OneToOne
+    @JoinColumn(name = "restourant_id")
+    private Restourant restourant;
+
+    @OneToMany
+    @JoinColumn(name = "order_id")
+    private List<Order> orders;
+
+
+
+
 
 }
