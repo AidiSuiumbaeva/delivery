@@ -11,13 +11,15 @@ public class Dish {
 
     @Id
     @GeneratedValue
+    @Column(name = "dish_id")
     private Long id;
+    @Column(length = 100)
     private String name;
     private double size;
     private String photo;
-    private double isActive;
+    private boolean isActive;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "menu_id")
     private Menu menu;
 }

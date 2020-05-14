@@ -14,7 +14,9 @@ import java.util.List;
 public class Order {
     @Id
     @GeneratedValue
+    @Column(name = "order_id")
     private Long id;
+    @Column(scale = 2)
     private double sum;
     @JsonFormat(pattern = "dd.MM.yyyy")
     private Date date;

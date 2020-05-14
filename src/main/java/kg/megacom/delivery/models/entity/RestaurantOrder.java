@@ -1,7 +1,6 @@
 package kg.megacom.delivery.models.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.sun.javafx.beans.IDProperty;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -10,10 +9,10 @@ import java.util.List;
 
 @Data
 @Entity
-@Table(name = "restourantOrders")
-public class RestourantOrder {
+@Table(name = "restaurantOrders")
+public class RestaurantOrder {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private boolean isReady;
 
@@ -22,13 +21,13 @@ public class RestourantOrder {
     @JsonFormat(pattern = "dd.MM.yyyy")
     private Date endDate;
 
-    @OneToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "restourant_id")
-    private Restourant restourant;
+    private Restaurant restaurant;
 
-    @OneToMany
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "order_id")
-    private List<Order> orders;
+    private Order order;
 
 
 

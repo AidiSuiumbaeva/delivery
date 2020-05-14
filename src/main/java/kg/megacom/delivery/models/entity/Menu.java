@@ -6,13 +6,15 @@ import javax.persistence.*;
 
 @Data
 @Entity
-@Table(name = "menu")
+@Table(name = "menus")
 public class Menu {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "menu_id")
     private Long id;
 
     @OneToOne
-    private Restourant restourant;
+    @JoinColumn(name = "restourant_id")
+    private Restaurant restaurant;
 }

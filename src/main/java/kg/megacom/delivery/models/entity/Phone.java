@@ -16,7 +16,5 @@ public class Phone {
     private boolean isActive;
     private boolean isMain;
 
-    @ManyToOne
-    @JoinColumn
-    private User user;
+
 }

@@ -13,13 +13,15 @@ import java.util.Date;
 public class Price {
     @Id
     @GeneratedValue
+    @Column(name = "price_id")
     private Long id;
+    @Column(scale = 2)
     private double price;
     @JsonFormat(pattern = "dd.MM.yyyy")
     private Date startDate;
     @JsonFormat(pattern = "dd.MM.yyyy")
     private Date endDate;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "dish_id")
     private Dish dish;
 

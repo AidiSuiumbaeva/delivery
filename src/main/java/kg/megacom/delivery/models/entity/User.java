@@ -4,6 +4,7 @@ import kg.megacom.delivery.models.entity.Positions;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Entity
@@ -15,10 +16,16 @@ public class User {
     private String name;
     private  boolean isActive;
 
-    @ManyToOne
+    @OneToOne
+    @JoinColumn(name = "account_id")
+    private Account account;
+
+    @OneToOne
     @JoinColumn(name = "position_id")
     private Positions positions;
 
-
+@OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @JoinColumn
+    private List<Phone> phones;
 
 }
