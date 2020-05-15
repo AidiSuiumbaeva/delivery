@@ -15,7 +15,4 @@ public class Restaurant {
     private String name;
     private boolean isActive;
 
-
-
-
 }
