@@ -12,8 +12,9 @@ public interface RestaurantMapper {
 
     RestaurantMapper RESTOURANT_MAPPER= Mappers.getMapper(RestaurantMapper.class);
 
-    Restaurant restourantDtoToRestourant(RestaurantDto restaurantDto);
-    RestaurantDto restourantToRestourantDto(Restaurant restaurant);
+    Restaurant restaurantToRestaurantDto(RestaurantDto restaurantDto);
+    RestaurantDto restaurantDtoToRestaurant(Restaurant restaurant);
+
 
     List<Restaurant> restaurantToRestaurantDtos(List<RestaurantDto> restaurantDtos);
     List<RestaurantDto> restaurantDtosToRestaurants(List<Restaurant> restaurant);

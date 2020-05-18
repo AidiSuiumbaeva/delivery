@@ -17,16 +17,16 @@ public class RestaurantServiceImpl implements RestaurantService {
     private RestaurantRep restaurantRep;
     @Override
     public RestaurantDto save(RestaurantDto restaurantDto) {
-        Restaurant restaurant= RestaurantMapper.RESTOURANT_MAPPER.restourantDtoToRestourant(restaurantDto);
+        Restaurant restaurant= RestaurantMapper.RESTOURANT_MAPPER.restaurantToRestaurantDto(restaurantDto);
         restaurant=restaurantRep.save(restaurant);
-        restaurantDto=RestaurantMapper.RESTOURANT_MAPPER.restourantToRestourantDto(restaurant);
+        restaurantDto=RestaurantMapper.RESTOURANT_MAPPER.restaurantDtoToRestaurant(restaurant);
         return restaurantDto;
     }
 
     @Override
     public RestaurantDto findById(Long id) {
         return RestaurantMapper.RESTOURANT_MAPPER
-                .restourantToRestourantDto(restaurantRep.findById(id).orElse(null));
+                .restaurantDtoToRestaurant(restaurantRep.findById(id).orElse(null));
     }
 
     @Override
@@ -40,12 +40,12 @@ return RestaurantMapper.RESTOURANT_MAPPER.restaurantDtosToRestaurants(restaurant
     public RestaurantDto delete(Long id) {
 
       RestaurantDto  restaurantDto=RestaurantMapper.RESTOURANT_MAPPER
-                .restourantToRestourantDto(restaurantRep.findById(id).orElse(null));
+                .restaurantDtoToRestaurant(restaurantRep.findById(id).orElse(null));
       restaurantDto.setActive(false);
 
-        Restaurant restaurant=RestaurantMapper.RESTOURANT_MAPPER.restourantDtoToRestourant(restaurantDto);
+        Restaurant restaurant=RestaurantMapper.RESTOURANT_MAPPER.restaurantToRestaurantDto(restaurantDto);
         restaurant=restaurantRep.save(restaurant);
-        restaurantDto=RestaurantMapper.RESTOURANT_MAPPER.restourantToRestourantDto(restaurant);
+        restaurantDto=RestaurantMapper.RESTOURANT_MAPPER.restaurantDtoToRestaurant(restaurant);
 
         return restaurantDto;
     }
