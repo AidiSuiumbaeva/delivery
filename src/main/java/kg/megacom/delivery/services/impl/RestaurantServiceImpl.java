@@ -32,8 +32,6 @@ public class RestaurantServiceImpl implements RestaurantService {
     @Override
     public List<RestaurantDto> getList() {
 return RestaurantMapper.RESTOURANT_MAPPER.restaurantDtosToRestaurants(restaurantRep.findAll());
-
-
     }
 
     @Override
